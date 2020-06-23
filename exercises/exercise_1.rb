@@ -7,6 +7,14 @@ puts "----------"
 # class Store < ApplicationRecord
 # end
 
+class Store 
+  has_many :employees
+end
+
+class Employee 
+  belongs_to :store
+end
+
 store_burnaby = Store.create(
   name: "Burnaby",
   annual_revenue: 300000,
