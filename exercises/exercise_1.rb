@@ -6,14 +6,24 @@ puts "----------"
 # Your code goes below here ...
 # class Store < ApplicationRecord
 # end
-
 class Store 
   has_many :employees
+  validates :name, length: { minimum: 3 }
+  validates :annual_revenue, numericality: { greater_than: 0 }
 end
-
 class Employee 
   belongs_to :store
+  validates :first_name, :last_name, :store_id, presence: true
+  validates :hourly_rate, :inclusion => 40..60
 end
+
+#   
+# end
+# class Employee 
+#   belongs_to :store
+#   validates :first_name, :last_name, :store_id, presence: true
+#   validates :hourly_rate, :inclusion => 40..60
+# end
 
 store_burnaby = Store.create(
   name: "Burnaby",
